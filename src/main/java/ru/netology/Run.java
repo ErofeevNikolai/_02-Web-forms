@@ -41,22 +41,20 @@ public class Run implements Runnable {
             //Создаем объект запроса
             request = new Request(requestLine);
 
+            final var path = parts[1];
+            final var method = parts[0];
+            if (!allowedMethods.contains(method)) {
+                badRequest(out);
+                return;
+            }
+            System.out.println(method);
+
             // если метод и путь есть в коллекции обрабатываем запрос
             if (mapHandle.containsKey(request.getMethod())) {
                 if (mapHandle.get(request.getMethod()).containsKey(request.getPath())) {
                     mapHandle.get(request.getMethod()).get(request.getPath()).handle(request, out);
                 }
             }
-
-            final var path = parts[1];
-            final var method = parts[0];
-            if (!allowedMethods.contains(method)) {
-                badRequest(out);
-                return;
-
-            }
-            System.out.println(method);
-
 
             out.write((
                     "HTTP/1.1 200 OK\r\n" +
