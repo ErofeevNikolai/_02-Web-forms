@@ -3,8 +3,10 @@ package ru.netology;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 
+import java.net.Socket;
 import java.nio.charset.Charset;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +19,7 @@ public class Request {
     Request(String requestLine) {
         requestPars(requestLine);
         if (path.contains("?")) {
+            this.parameters = new HashMap<>();
             requestParam();
         }
     }
