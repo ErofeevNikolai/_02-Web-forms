@@ -49,11 +49,11 @@ public class Request {
         }
     }
 
-    public NameValuePair getQueryParam(String name){
+    public NameValuePair getQueryParam(String name) {
         return parameters.get(name);
     }
 
-    public Collection<NameValuePair> getQueryParams(){
+    public Collection<NameValuePair> getQueryParams() {
         return parameters.values();
     }
 }

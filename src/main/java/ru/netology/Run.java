@@ -33,7 +33,6 @@ public class Run implements Runnable {
             final var requestLine = in.readLine();
             final var parts = requestLine.split(" ");
 
-
             if (parts.length != 3) {
                 return;
             }
@@ -75,6 +74,7 @@ public class Run implements Runnable {
             }
         }
     }
+
     private static void badRequest(BufferedOutputStream out) throws IOException {
         out.write((
                 "HTTP/1.1 400 Bad Request\r\n" +
